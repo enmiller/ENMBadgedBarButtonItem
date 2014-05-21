@@ -13,8 +13,8 @@
 - (instancetype)initWithCustomView:(UIView *)customView {
   self = [super initWithCustomView:customView];
   if (self) {
-    _badgeBackgroundColor = [UIColor blueColor];
-    _badgeTextColor = [UIColor whiteColor];
+    _badgeBackgroundColor = [UIColor greenColor];
+    _badgeTextColor = [UIColor blackColor];
     _badgeFont = [UIFont systemFontOfSize:12.0];
     _badgePadding = 1.f;
     _badgeMinSize = 6.f;
@@ -51,7 +51,7 @@
   }
 
   self.badgeLabel.text = self.badgeValue;
-  
+
   NSTimeInterval duration = animated ? 0.2 : 0;
   [UIView
    animateWithDuration:duration
@@ -62,13 +62,13 @@
 
 - (void)updateBadgeFrame {
   CGSize expectedLabelSize = [self badgeExpectedSize];
-  
+
   CGFloat minHeight = expectedLabelSize.height;
-  
+
   minHeight = (minHeight < self.badgeMinSize) ? self.badgeMinSize : expectedLabelSize.height;
   CGFloat minWidth = expectedLabelSize.width;
   CGFloat padding = self.badgePadding;
-  
+
   minWidth = (minWidth < minHeight) ? minHeight : expectedLabelSize.width;
   self.badgeLabel.frame = CGRectMake(self.badgeOriginX,
                                      self.badgeOriginY,
@@ -95,12 +95,12 @@
 
 - (void)setBadgeValue:(NSString *)badgeValue {
   _badgeValue = badgeValue;
-  
+
   if ([self shouldBadgeHide:badgeValue]) {
     [self removeBadge];
     return;
   }
-  
+
   if (self.badgeLabel) {
     [self updateBadgeValueAnimated:YES];
   } else {
@@ -136,14 +136,14 @@
   label.font = self.badgeFont;
   label.backgroundColor = self.badgeBackgroundColor;
   label.textAlignment = NSTextAlignmentCenter;
-  
+
   return label;
 }
 
 - (CGSize)badgeExpectedSize {
   UILabel *frameLabel = [self duplicateLabel:self.badgeLabel];
   [frameLabel sizeToFit];
-  
+
   CGSize expectedLabelSize = frameLabel.frame.size;
   return expectedLabelSize;
 }
@@ -151,7 +151,7 @@
 - (UILabel *)duplicateLabel:(UILabel *)labelToCopy {
   UILabel *duplicateLabel = [[UILabel alloc] initWithFrame:labelToCopy.frame];
   duplicateLabel.text = labelToCopy.text;
-  
+
   return duplicateLabel;
 }
 
@@ -162,14 +162,11 @@
       self.shouldHideBadgeAtZero) {
     return YES;
   }
-  
+
   return NO;
 }
 
 - (void)updateBadgeProperties {
-  self.badgeBackgroundColor = [UIColor blueColor];
-  self.badgeTextColor = [UIColor whiteColor];
-  self.badgeFont = [UIFont systemFontOfSize:12.0];
   self.badgePadding = 1.f;
   self.badgeMinSize = 6.f;
   self.badgeOriginX = self.customView.frame.size.width - _badgeLabel.frame.size.width/2;
