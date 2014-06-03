@@ -27,16 +27,18 @@ static NSInteger count = 0;
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc]
-                                  initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                  initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
                                   target:self
-                                  action:@selector(insertNewObject:)];
+                                  action:@selector(rightButtonPressed:)];
     self.navigationItem.rightBarButtonItem = addButton;
     
     // Build your regular UIBarButtonItem with Custom View
     UIImage *image = [UIImage imageNamed:@"barbuttonimage"];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0,0,image.size.width, image.size.height);
-    [button addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
+    [button addTarget:self
+               action:@selector(leftButtonPress:)
+     forControlEvents:UIControlEventTouchDown];
     [button setBackgroundImage:image forState:UIControlStateNormal];
   
     self.navButton = [[ENMBadgedBarButtonItem alloc] initWithCustomView:button];
@@ -45,13 +47,13 @@ static NSInteger count = 0;
   
 }
 
-- (void)insertNewObject:(id)sender {
+- (void)rightButtonPressed:(id)sender {
     count = 0;
     self.navButton.badgeValue = [NSString stringWithFormat:@"%zd", count];
 }
 
 #pragma mark - Private
-- (void)buttonPress:(id)sender {
+- (void)leftButtonPress:(id)sender {
     count++;
     self.navButton.badgeValue = [NSString stringWithFormat:@"%zd", count];
 }

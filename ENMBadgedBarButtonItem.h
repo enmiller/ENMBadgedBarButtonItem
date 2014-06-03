@@ -15,10 +15,6 @@
 @property (nonatomic, copy) UIColor *badgeBackgroundColor;
 @property (nonatomic, copy) UIColor *badgeTextColor;
 @property (nonatomic, copy) UIFont *badgeFont;
-@property (nonatomic, assign) CGFloat badgePadding;
-@property (nonatomic, assign) CGFloat badgeMinSize;
-@property (nonatomic, assign) CGFloat badgeOriginX;
-@property (nonatomic, assign) CGFloat badgeOriginY;
 @property (nonatomic, assign) BOOL shouldHideBadgeAtZero;
 @property (nonatomic, assign) BOOL shouldAnimateBadge;
 

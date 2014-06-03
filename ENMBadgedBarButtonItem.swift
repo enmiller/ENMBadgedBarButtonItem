@@ -51,22 +51,9 @@ class ENMBadgedBarButtonItem: UIBarButtonItem {
     }
     }
     @final let badgePadding: CGFloat = kENMDefaultPadding
-    var badgeMinSize: CGFloat = kENMDefaultMinSize {
-    didSet {
-        updateBadgeFrame()
-    }
-    }
-    var badgeOriginX: CGFloat = kENMDefaultOriginX {
-    didSet {
-        updateBadgeFrame()
-
-    }
-    }
-    var badgeOriginY: CGFloat = kENMDefaultOriginY {
-    didSet {
-        updateBadgeFrame()
-    }
-    }
+    @final let badgeMinSize: CGFloat = kENMDefaultMinSize
+    var badgeOriginX: CGFloat = kENMDefaultOriginX
+    @final let badgeOriginY: CGFloat = kENMDefaultOriginY
     var shouldHideBadgeAtZero: Bool = true
     var shouldAnimateBadge: Bool = true
     
@@ -110,7 +97,9 @@ class ENMBadgedBarButtonItem: UIBarButtonItem {
         
         var duration: CGFloat = animated ? 0.2 : 0.0
         
-        self.updateBadgeFrame()
+        UIView.animateWithDuration(duration) {
+            self.updateBadgeFrame()
+        }
     }
     
     func updateBadgeFrame() {
@@ -123,14 +112,12 @@ class ENMBadgedBarButtonItem: UIBarButtonItem {
         
         minWidth = (minWidth < minHeight) ? minHeight : expectedLabelSize.width
         
-        UIView.animateWithDuration(0.2) {
-                self.badgeLabel.frame = CGRectMake(self.badgeOriginX,
-                                                   self.badgeOriginY,
-                                                   minWidth + padding,
-                                                   minHeight + padding)
-                self.badgeLabel.layer.cornerRadius = (minHeight + padding) / 2
-                self.badgeLabel.layer.masksToBounds = true
-            }
+        self.badgeLabel.frame = CGRectMake(self.badgeOriginX,
+                                           self.badgeOriginY,
+                                           minWidth + padding,
+                                           minHeight + padding)
+        self.badgeLabel.layer.cornerRadius = (minHeight + padding) / 2
+        self.badgeLabel.layer.masksToBounds = true
     }
     
     func removeBadge() {
