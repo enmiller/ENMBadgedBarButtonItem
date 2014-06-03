@@ -50,26 +50,10 @@ class ENMBadgedBarButtonItem: UIBarButtonItem {
         refreshBadgeLabelProperties()
     }
     }
-    var badgePadding: CGFloat = kENMDefaultPadding {
-    didSet {
-        updateBadgeFrame()
-    }
-    }
-    var badgeMinSize: CGFloat = kENMDefaultMinSize {
-    didSet {
-        updateBadgeFrame()
-    }
-    }
-    var badgeOriginX: CGFloat = kENMDefaultOriginX {
-    didSet {
-        updateBadgeFrame()
-    }
-    }
-    var badgeOriginY: CGFloat = kENMDefaultOriginY {
-    didSet {
-        updateBadgeFrame()
-    }
-    }
+    @final let badgePadding: CGFloat = kENMDefaultPadding
+    @final let badgeMinSize: CGFloat = kENMDefaultMinSize
+    var badgeOriginX: CGFloat = kENMDefaultOriginX
+    @final let badgeOriginY: CGFloat = kENMDefaultOriginY
     var shouldHideBadgeAtZero: Bool = true
     var shouldAnimateBadge: Bool = true
     
@@ -113,7 +97,7 @@ class ENMBadgedBarButtonItem: UIBarButtonItem {
         
         var duration: CGFloat = animated ? 0.2 : 0.0
         
-        UIView.animateWithDuration(0.2) {
+        UIView.animateWithDuration(duration) {
             self.updateBadgeFrame()
         }
     }
@@ -127,18 +111,22 @@ class ENMBadgedBarButtonItem: UIBarButtonItem {
         var padding: CGFloat = badgePadding
         
         minWidth = (minWidth < minHeight) ? minHeight : expectedLabelSize.width
-        badgeLabel.frame = CGRectMake(badgeOriginX,
-                                      badgeOriginY,
-                                      minWidth + padding,
-                                      minHeight + padding)
-        badgeLabel.layer.cornerRadius = (minHeight + padding) / 2
-        badgeLabel.layer.masksToBounds = true
+        
+        self.badgeLabel.frame = CGRectMake(self.badgeOriginX,
+                                           self.badgeOriginY,
+                                           minWidth + padding,
+                                           minHeight + padding)
+        self.badgeLabel.layer.cornerRadius = (minHeight + padding) / 2
+        self.badgeLabel.layer.masksToBounds = true
     }
     
     func removeBadge() {
         UIView.animateWithDuration(0.2,
-            animations: ({ self.badgeLabel.transform = CGAffineTransformMakeScale(0.0, 0.0)}),
-            completion: ({ finished in self.badgeLabel.removeFromSuperview()}))
+            animations: {
+                self.badgeLabel.transform = CGAffineTransformMakeScale(0.0, 0.0)
+            }, completion: { finished in
+                self.badgeLabel.removeFromSuperview()
+            })
     }
     
     
