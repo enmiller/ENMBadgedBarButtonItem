@@ -22,7 +22,9 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         setUpLeftBarButton()
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Rewind, target: self, action: "rightButtonPressed:")
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Rewind,
+            target: self,
+            action: "rightButtonPressed:")
         navigationItem.rightBarButtonItem = addButton
     }
     
@@ -31,7 +33,9 @@ class MasterViewController: UITableViewController {
         var button = UIButton.buttonWithType(.Custom) as UIButton
         button.frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height)
         button.setBackgroundImage(image, forState: UIControlState.Normal)
-        button.addTarget(self, action: "leftButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self,
+            action: "leftButtonPressed:",
+            forControlEvents: UIControlEvents.TouchUpInside)
         
         var newBarButton = ENMBadgedBarButtonItem(customView: button, value: "0")
         leftBarButton = newBarButton

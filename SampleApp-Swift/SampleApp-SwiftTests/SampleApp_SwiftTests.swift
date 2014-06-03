@@ -1,14 +1,14 @@
 //
-//  TestBadge_SwiftTests.swift
-//  TestBadge-SwiftTests
+//  SampleApp_SwiftTests.swift
+//  SampleApp-SwiftTests
 //
-//  Created by Eric Miller on 6/2/14.
+//  Created by Eric Miller on 6/3/14.
 //  Copyright (c) 2014 Yogurt Salad. All rights reserved.
 //
 
 import XCTest
 
-class TestBadge_SwiftTests: XCTestCase {
+class SampleApp_SwiftTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
