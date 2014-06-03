@@ -10,49 +10,71 @@ import UIKit
 import Foundation
 import QuartzCore
 
-let kENMPadding: CGFloat = 3.0
+let kENMDefaultPadding: CGFloat = 3.0
+let kENMDefaultMinSize: CGFloat = 8.0
+let kENMDefaultOriginX: CGFloat = 0.0
+let kENMDefaultOriginY: CGFloat = 0.0
 
 class ENMBadgedBarButtonItem: UIBarButtonItem {
     
     var badgeLabel: UILabel = UILabel()
-    var badgeValue: String? {
+    var badgeValue: String {
     didSet {
-        if (self.shouldBadgeHide(badgeValue!)) {
-            self.removeBadge()
+        if (shouldBadgeHide(badgeValue)) {
+            removeBadge()
             return;
         }
         
         if (badgeLabel.superview != nil) {
-            self.updateBadgeValueAnimated(true)
+            updateBadgeValueAnimated(true)
         } else {
             badgeLabel = self.createBadgeLabel()
-            self.updateBadgeProperties()
+            updateBadgeProperties()
             customView.addSubview(badgeLabel)
-            self.updateBadgeValueAnimated(false)
+            updateBadgeValueAnimated(false)
         }
     }
     }
     var badgeBackgroundColor: UIColor = UIColor.greenColor() {
     didSet {
-        self.refreshBadgeLabelProperties()
+        refreshBadgeLabelProperties()
     }
     }
     var badgeTextColor: UIColor = UIColor.blackColor() {
     didSet {
-        self.refreshBadgeLabelProperties()
+        refreshBadgeLabelProperties()
     }
     }
     var badgeFont: UIFont = UIFont.systemFontOfSize(12.0){
     didSet {
-        self.refreshBadgeLabelProperties()
+        refreshBadgeLabelProperties()
     }
     }
-    var badgePadding: CGFloat = kENMPadding
-    var badgeMinSize: CGFloat = 8.0
-    var badgeOriginX: CGFloat = 0.0
-    var badgeOriginY: CGFloat = 0.0
+    var badgePadding: CGFloat = kENMDefaultPadding {
+    didSet {
+        updateBadgeFrame()
+    }
+    }
+    var badgeMinSize: CGFloat = kENMDefaultMinSize {
+    didSet {
+        updateBadgeFrame()
+    }
+    }
+    var badgeOriginX: CGFloat = kENMDefaultOriginX {
+    didSet {
+        updateBadgeFrame()
+    }
+    }
+    var badgeOriginY: CGFloat = kENMDefaultOriginY {
+    didSet {
+        updateBadgeFrame()
+    }
+    }
     var shouldHideBadgeAtZero: Bool = true
     var shouldAnimateBadge: Bool = true
+    
+    
+// MARK: - Initializers
     
     init()  {
         badgeValue = "0"
@@ -61,10 +83,12 @@ class ENMBadgedBarButtonItem: UIBarButtonItem {
     
     init(customView: UIView!, value: String!) {
         badgeValue = value
+        badgeOriginX = customView.frame.size.width - badgeLabel.frame.size.width/2
         super.init(customView: customView)
     }
     
-    // Utilities
+    
+// MARK: - Utilities
     
     func refreshBadgeLabelProperties() {
         if (badgeLabel != nil) {
@@ -75,7 +99,7 @@ class ENMBadgedBarButtonItem: UIBarButtonItem {
     }
     
     func updateBadgeValueAnimated(animated: Bool) {
-        if (animated && shouldAnimateBadge && (badgeLabel.text == badgeValue)) {
+        if (animated && shouldAnimateBadge && (badgeLabel.text != badgeValue)) {
             var animation: CABasicAnimation = CABasicAnimation()
             animation.keyPath = "transform.scale"
             animation.fromValue = 1.5
@@ -95,7 +119,7 @@ class ENMBadgedBarButtonItem: UIBarButtonItem {
     }
     
     func updateBadgeFrame() {
-        var expectedLabelSize: CGSize = self.badgeExpectedSize()
+        var expectedLabelSize: CGSize = badgeExpectedSize()
         var minHeight: CGFloat = expectedLabelSize.height
         
         minHeight = (minHeight < badgeMinSize) ? badgeMinSize : expectedLabelSize.height
@@ -103,20 +127,22 @@ class ENMBadgedBarButtonItem: UIBarButtonItem {
         var padding: CGFloat = badgePadding
         
         minWidth = (minWidth < minHeight) ? minHeight : expectedLabelSize.width
-        badgeLabel.frame = CGRectMake(badgeOriginX, badgeOriginY, minWidth + padding, minHeight + padding)
+        badgeLabel.frame = CGRectMake(badgeOriginX,
+                                      badgeOriginY,
+                                      minWidth + padding,
+                                      minHeight + padding)
         badgeLabel.layer.cornerRadius = (minHeight + padding) / 2
         badgeLabel.layer.masksToBounds = true
     }
     
     func removeBadge() {
-        var completionBlock: (Bool) -> Void = {finished in self.badgeLabel.removeFromSuperview()}
         UIView.animateWithDuration(0.2,
-            animations: ({self.badgeLabel.transform = CGAffineTransformMakeScale(0.0, 0.0)}),
-            completion: completionBlock)
+            animations: ({ self.badgeLabel.transform = CGAffineTransformMakeScale(0.0, 0.0)}),
+            completion: ({ finished in self.badgeLabel.removeFromSuperview()}))
     }
     
     
-    // Internal Helpers
+// MARK: - Internal Helpers
     
     func createBadgeLabel() -> UILabel {
         var frame = CGRectMake(badgeOriginX, badgeOriginY, 15, 15)
@@ -155,9 +181,6 @@ class ENMBadgedBarButtonItem: UIBarButtonItem {
     }
     
     func updateBadgeProperties() {
-        badgePadding = kENMPadding
-        badgeMinSize = 8.0
         badgeOriginX = self.customView.frame.size.width - badgeLabel.frame.size.width/2
-        badgeOriginY = 0.0
     }
 }
