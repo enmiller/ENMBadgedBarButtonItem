@@ -22,8 +22,8 @@
 		4C4E51BE1919851C0004970E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4E519D1919851C0004970E /* UIKit.framework */; };
 		4C4E51C61919851C0004970E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C4E51C41919851C0004970E /* InfoPlist.strings */; };
 		4C4E51C81919851C0004970E /* TestBadgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E51C71919851C0004970E /* TestBadgeTests.m */; };
-		7B02A7F0192D50C8004B5727 /* ENMBadgedBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B02A7EF192D50C8004B5727 /* ENMBadgedBarButtonItem.m */; };
-		7B02A7F1192D50C8004B5727 /* ENMBadgedBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B02A7EF192D50C8004B5727 /* ENMBadgedBarButtonItem.m */; };
+		7B8B2AA1193E1F0F00A5ABD3 /* ENMBadgedBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B2AA0193E1F0F00A5ABD3 /* ENMBadgedBarButtonItem.m */; };
+		7B8B2AA2193E1F0F00A5ABD3 /* ENMBadgedBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B2AA0193E1F0F00A5ABD3 /* ENMBadgedBarButtonItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +58,8 @@
 		4C4E51C31919851C0004970E /* TestBadgeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestBadgeTests-Info.plist"; sourceTree = "<group>"; };
 		4C4E51C51919851C0004970E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C4E51C71919851C0004970E /* TestBadgeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestBadgeTests.m; sourceTree = "<group>"; };
-		7B02A7EE192D50C8004B5727 /* ENMBadgedBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ENMBadgedBarButtonItem.h; path = ../../../ENMBadgedBarButtonItem.h; sourceTree = "<group>"; };
-		7B02A7EF192D50C8004B5727 /* ENMBadgedBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ENMBadgedBarButtonItem.m; path = ../../../ENMBadgedBarButtonItem.m; sourceTree = "<group>"; };
+		7B8B2A9F193E1F0F00A5ABD3 /* ENMBadgedBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ENMBadgedBarButtonItem.h; path = ../../ENMBadgedBarButtonItem.h; sourceTree = "<group>"; };
+		7B8B2AA0193E1F0F00A5ABD3 /* ENMBadgedBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ENMBadgedBarButtonItem.m; path = ../../ENMBadgedBarButtonItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +120,8 @@
 		4C4E519F1919851C0004970E /* TestBadge */ = {
 			isa = PBXGroup;
 			children = (
-				7B02A7EE192D50C8004B5727 /* ENMBadgedBarButtonItem.h */,
-				7B02A7EF192D50C8004B5727 /* ENMBadgedBarButtonItem.m */,
+				7B8B2A9F193E1F0F00A5ABD3 /* ENMBadgedBarButtonItem.h */,
+				7B8B2AA0193E1F0F00A5ABD3 /* ENMBadgedBarButtonItem.m */,
 				4C4E51A81919851C0004970E /* AppDelegate.h */,
 				4C4E51A91919851C0004970E /* AppDelegate.m */,
 				4C4E51AB1919851C0004970E /* Main.storyboard */,
@@ -265,7 +265,7 @@
 				4C4E51B01919851C0004970E /* MasterViewController.m in Sources */,
 				4C4E51A61919851C0004970E /* main.m in Sources */,
 				4C4E51B31919851C0004970E /* DetailViewController.m in Sources */,
-				7B02A7F0192D50C8004B5727 /* ENMBadgedBarButtonItem.m in Sources */,
+				7B8B2AA1193E1F0F00A5ABD3 /* ENMBadgedBarButtonItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B02A7F1192D50C8004B5727 /* ENMBadgedBarButtonItem.m in Sources */,
+				7B8B2AA2193E1F0F00A5ABD3 /* ENMBadgedBarButtonItem.m in Sources */,
 				4C4E51C81919851C0004970E /* TestBadgeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

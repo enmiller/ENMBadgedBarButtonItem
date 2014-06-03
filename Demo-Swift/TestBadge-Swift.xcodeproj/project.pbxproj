@@ -13,8 +13,8 @@
 		7B8B2A80193D329500A5ABD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B8B2A7E193D329500A5ABD3 /* Main.storyboard */; };
 		7B8B2A82193D329500A5ABD3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B8B2A81193D329500A5ABD3 /* Images.xcassets */; };
 		7B8B2A8E193D329600A5ABD3 /* TestBadge_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B2A8D193D329600A5ABD3 /* TestBadge_SwiftTests.swift */; };
-		7B8B2A98193D360B00A5ABD3 /* ENMBadgedBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B2A97193D360B00A5ABD3 /* ENMBadgedBarButtonItem.swift */; };
-		7B8B2A99193D360B00A5ABD3 /* ENMBadgedBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B2A97193D360B00A5ABD3 /* ENMBadgedBarButtonItem.swift */; };
+		7B8B2A9D193E1EF800A5ABD3 /* ENMBadgedBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B2A9C193E1EF800A5ABD3 /* ENMBadgedBarButtonItem.swift */; };
+		7B8B2A9E193E1EF800A5ABD3 /* ENMBadgedBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B2A9C193E1EF800A5ABD3 /* ENMBadgedBarButtonItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,7 @@
 		7B8B2A87193D329500A5ABD3 /* TestBadge-SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TestBadge-SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8B2A8C193D329600A5ABD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B8B2A8D193D329600A5ABD3 /* TestBadge_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBadge_SwiftTests.swift; sourceTree = "<group>"; };
-		7B8B2A97193D360B00A5ABD3 /* ENMBadgedBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENMBadgedBarButtonItem.swift; path = ../../../ENMBadgedBarButtonItem.swift; sourceTree = "<group>"; };
+		7B8B2A9C193E1EF800A5ABD3 /* ENMBadgedBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENMBadgedBarButtonItem.swift; path = ../../ENMBadgedBarButtonItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +81,10 @@
 		7B8B2A75193D329500A5ABD3 /* TestBadge-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				7B8B2A9C193E1EF800A5ABD3 /* ENMBadgedBarButtonItem.swift */,
 				7B8B2A78193D329500A5ABD3 /* AppDelegate.swift */,
 				7B8B2A7A193D329500A5ABD3 /* MasterViewController.swift */,
 				7B8B2A7C193D329500A5ABD3 /* DetailViewController.swift */,
-				7B8B2A97193D360B00A5ABD3 /* ENMBadgedBarButtonItem.swift */,
 				7B8B2A7E193D329500A5ABD3 /* Main.storyboard */,
 			);
 			path = "TestBadge-Swift";
@@ -218,7 +218,7 @@
 			files = (
 				7B8B2A7D193D329500A5ABD3 /* DetailViewController.swift in Sources */,
 				7B8B2A7B193D329500A5ABD3 /* MasterViewController.swift in Sources */,
-				7B8B2A98193D360B00A5ABD3 /* ENMBadgedBarButtonItem.swift in Sources */,
+				7B8B2A9D193E1EF800A5ABD3 /* ENMBadgedBarButtonItem.swift in Sources */,
 				7B8B2A79193D329500A5ABD3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,7 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B8B2A99193D360B00A5ABD3 /* ENMBadgedBarButtonItem.swift in Sources */,
+				7B8B2A9E193E1EF800A5ABD3 /* ENMBadgedBarButtonItem.swift in Sources */,
 				7B8B2A8E193D329600A5ABD3 /* TestBadge_SwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +408,7 @@
 				7B8B2A93193D329600A5ABD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7B8B2A94193D329600A5ABD3 /* Build configuration list for PBXNativeTarget "TestBadge-SwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +417,7 @@
 				7B8B2A96193D329600A5ABD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
