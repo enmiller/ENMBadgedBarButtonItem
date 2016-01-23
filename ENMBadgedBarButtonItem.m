@@ -119,7 +119,12 @@
         self.badgeLabel = [self newBadgeLabel];
         [self updateBadgeProperties];
         [self.customView addSubview:self.badgeLabel];
-        [self updateBadgeValueAnimated:NO];
+        
+        // Pull the setting of the value and layer border radius off onto the next event loop.
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.badgeLabel.text = self.badgeValue;
+            [self updateBadgeFrame];
+        });
     }
 }
 
